@@ -1,0 +1,50 @@
+.container header {
+    font-size: 5rem;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+}
+
+.scorebox {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.score {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.score div:first-child {
+    border-bottom: 2px solid gray;
+}
+
+.versus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7rem;
+}
+
+.restartButton {
+    margin-top: 4rem;
+    height: 5rem;
+    background-color: greenyellow;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 2rem;
+    transition: 0.4s;
+}
+
+.restartButton:hover {
+    background-color: rgb(41, 175, 41);
+    color: white;
+}

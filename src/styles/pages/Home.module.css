@@ -1,0 +1,9 @@
+.container {
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(235, 235, 235);
+}
