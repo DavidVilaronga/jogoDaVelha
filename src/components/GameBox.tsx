@@ -4,14 +4,14 @@ import styles from '../styles/components/GameBox.module.css'
 
 export function GameBox() {
 	const { select1, select2, select3, 
-					select4, select5, select6, 
-					select7, select8, select9, 
-					activeX1, activeX2, activeX3, 
-					activeX4, activeX5, activeX6, 
-					activeX7, activeX8, activeX9,
-					activeO1, activeO2, activeO3,
-					activeO4, activeO5, activeO6,
-					activeO7, activeO8, activeO9,  } = useContext(GameContext)
+			select4, select5, select6, 
+			select7, select8, select9, 
+			activeX1, activeX2, activeX3, 
+			activeX4, activeX5, activeX6, 
+			activeX7, activeX8, activeX9,
+			activeO1, activeO2, activeO3,
+			activeO4, activeO5, activeO6,
+			activeO7, activeO8, activeO9,  } = useContext(GameContext)
 
 	return(
 		<div className={styles.container}>

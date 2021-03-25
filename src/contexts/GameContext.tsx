@@ -1,4 +1,6 @@
 import { createContext, ReactNode, useState } from "react";
+import { OWinModal } from "../components/OWinModal";
+import { XWinModal } from "../components/XWinModal";
 
 interface GameContextData {
     activeX1: number;
@@ -60,6 +62,8 @@ export function GameProvider({children}: GameProviderProps) {
     const [ activeO7, setActiveO7 ] = useState(0)
     const [ activeO8, setActiveO8 ] = useState(0)
     const [ activeO9, setActiveO9 ] = useState(0)
+    const [ isXWin, setIsXWin ] = useState(false)
+    const [ isOWin, setIsOWin ] = useState(false)
     const [ scoreX, setScoreX ] = useState(0)
     const [ scoreO, setScoreO ] = useState(0)
 
@@ -189,8 +193,12 @@ export function GameProvider({children}: GameProviderProps) {
          activeX1==1 && activeX5==1 && activeX9==1 ||
          activeX3==1 && activeX5==1 && activeX7==1 
          ) {
-             setScoreX( scoreX + 1 )
-             newGame()
+
+             setTimeout(()=>{
+
+                xWin()
+                newGame()
+             }, 500)
          }
 
     if ( activeO1==1 && activeO2==1 && activeO3==1 ||
@@ -202,9 +210,27 @@ export function GameProvider({children}: GameProviderProps) {
         activeO1==1 && activeO5==1 && activeO9==1 ||
         activeO3==1 && activeO5==1 && activeO7==1 
         ) {
-            setScoreO( scoreO + 1 )
-            newGame()
+            setTimeout(()=>{
+                oWin()
+                newGame()
+            },500)
         }
+
+    function xWin() {
+        setIsXWin(true)
+        setTimeout(() => {
+            setIsXWin(false)
+            setScoreX( scoreX + 1 )        
+        },1500)
+    }
+
+    function oWin() {
+        setIsOWin(true)
+        setTimeout(()=>{
+            setIsOWin(false)
+            setScoreO( scoreO + 1 )
+        },1500)
+    }
 
     function newGame() {
         setActiveX1(0)
@@ -216,15 +242,15 @@ export function GameProvider({children}: GameProviderProps) {
         setActiveX7(0)
         setActiveX8(0)
         setActiveX9(0)
-        setActiveO1(0)
-        setActiveO2(0)
-        setActiveO3(0)
-        setActiveO4(0)
-        setActiveO5(0)
-        setActiveO6(0)
-        setActiveO7(0)
-        setActiveO8(0)
-        setActiveO9(0)
+       setActiveO1(0)
+       setActiveO2(0)
+       setActiveO3(0)
+       setActiveO4(0)
+       setActiveO5(0)
+       setActiveO6(0)
+       setActiveO7(0)
+       setActiveO8(0)
+       setActiveO9(0)
     }
 
     function restart() {
@@ -269,6 +295,9 @@ export function GameProvider({children}: GameProviderProps) {
             }}    
         >
             {children}
+
+            {isXWin && <XWinModal/>}
+            {isOWin && <OWinModal/>}
         </GameContext.Provider>
     )
 }
